@@ -2,18 +2,18 @@ package com.example.farmbridge.models
 
 
 class Delivery {
-    var userid: String = ""
+    var userId: String = ""
+    var productId: String = ""
     var location: String = ""
-    var deliveryId: String = ""
 
     constructor(
-        userid: String,
-        location: String,
-        deliveryId: String
+        userId: String,
+        productId: String,
+        location: String
     ){
-        this.userid = userid
+        this.userId = userId
+        this.productId = productId
         this.location = location
-        this.deliveryId = deliveryId
     }
     constructor()
 }

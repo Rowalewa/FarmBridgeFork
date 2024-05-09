@@ -137,7 +137,6 @@ fun RegisterScreen(navController: NavController){
                 email.text.trim(),
                 pass.text.trim(),
                 confirmpass.text.trim())
-            navController.navigate(ROUTE_HOME)
             }, modifier = Modifier.fillMaxWidth()) {
                 Text(text = "Register")
             }

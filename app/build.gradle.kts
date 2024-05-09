@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.androidx.leanback)
     implementation(libs.firebase.storage.ktx)
     implementation(libs.play.services.analytics.impl)
+    implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

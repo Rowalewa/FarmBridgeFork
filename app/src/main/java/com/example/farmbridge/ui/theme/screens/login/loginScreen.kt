@@ -55,7 +55,7 @@ fun LoginScreen(navController: NavController){
         var pass by remember {
             mutableStateOf(TextFieldValue(""))
         }
-        var context = LocalContext.current
+        val context = LocalContext.current
         Column (modifier = Modifier
             .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally){
@@ -91,7 +91,6 @@ fun LoginScreen(navController: NavController){
                 email.text.trim(),
                 pass.text.trim(),
             )
-                navController.navigate(ROUTE_HOME)
             }, modifier = Modifier.fillMaxWidth()) {
                 Text(text = "Login")
             }

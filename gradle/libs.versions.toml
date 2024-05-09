@@ -1,5 +1,5 @@
 [versions]
-agp = "8.3.0"
+agp = "8.4.0"
 coilCompose = "2.4.0"
 kotlin = "1.9.0"
 coreKtx = "1.12.0"
@@ -17,6 +17,8 @@ firebaseDatabase = "20.3.1"
 leanback = "1.0.0"
 firebaseStorageKtx = "20.3.0"
 playServicesAnalyticsImpl = "18.0.4"
+googleGmsGoogleServices = "4.4.1"
+firebaseStorage = "21.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,8 +44,10 @@ firebase-database = { group = "com.google.firebase", name = "firebase-database",
 androidx-leanback = { group = "androidx.leanback", name = "leanback", version.ref = "leanback" }
 firebase-storage-ktx = { group = "com.google.firebase", name = "firebase-storage-ktx", version.ref = "firebaseStorageKtx" }
 play-services-analytics-impl = { group = "com.google.android.gms", name = "play-services-analytics-impl", version.ref = "playServicesAnalyticsImpl" }
+firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+googleGmsGoogleServices = { id = "com.google.gms.google-services", version.ref = "googleGmsGoogleServices" }
 

@@ -39,13 +39,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-//import com.example.farmbridge.navigation.ROUTE_PRODUCT
 import com.example.farmbridge.navigation.ROUTE_VIEW_PRODUCT
 import com.example.myapplication.data.ProductViewModel
-
-//import com.example.farmbridge.navigation.ROUTE_VIEW_UPLOAD
-//import com.example.firebaseauth.data.productviewmodel
-//import com.example.firebaseauth.navigation.ROUTE_VIEW_PRODUCT
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -91,31 +86,31 @@ fun AddProductScreen(navController: NavHostController) {
             label = { Text(text = "Product price *") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
         )
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Button(onClick = {
-
-            val productRepository = ProductViewModel(navController,context)
-            productRepository.saveProduct(productName.text.trim(),productQuantity.text.trim(),
-                productPrice.text)
-            navController.navigate(ROUTE_VIEW_PRODUCT)
-
-
-        }) {
-            Text(text = "Save")
-        }
         Spacer(modifier = Modifier.height(20.dp))
 
         //---------------------IMAGE PICKER START-----------------------------------//
 
-        ImagePicker(Modifier,context, navController, productName.text.trim(), productQuantity.text.trim(), productPrice.text.trim())
+        ImagePicker(
+            Modifier,
+            context,
+            navController,
+            productName.text.trim(),
+            productQuantity.text.trim(),
+            productPrice.text.trim()
+        )
 
 
     }
 }
 @Composable
-fun ImagePicker(modifier: Modifier = Modifier, context: Context, navController: NavHostController, name:String, quantity:String, price:String) {
+fun ImagePicker(
+    modifier: Modifier = Modifier,
+    context: Context,
+    navController: NavHostController,
+    productName:String,
+    productQuantity:String,
+    productPrice:String
+) {
     var hasImage by remember { mutableStateOf(false) }
     var imageUri by remember { mutableStateOf<Uri?>(null) }
 
@@ -147,15 +142,29 @@ fun ImagePicker(modifier: Modifier = Modifier, context: Context, navController: 
                 )
             }
 
-//            Spacer(modifier = Modifier.height(20.dp))
-//            Button(onClick = {
-//                //-----------WRITE THE UPLOAD LOGIC HERE---------------//
-//
-//                navController.navigate(ROUTE_PRODUCT)
-//
-//            }) {
-//                Text(text = "view products")
-//            }
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Button(onClick = {
+                //-----------WRITE THE UPLOAD LOGIC HERE---------------//
+                val productRepository = ProductViewModel(navController,context)
+                productRepository.saveProduct(
+                    productName,
+                    productQuantity,
+                    productPrice,
+                    imageUri!!
+                )
+
+            }) {
+                Text(text = "Upload")
+            }
+            Button(onClick = {
+                //-----------WRITE THE UPLOAD LOGIC HERE---------------//
+
+                navController.navigate(ROUTE_VIEW_PRODUCT)
+
+            }) {
+                Text(text = "View Products")
+            }
 
         }
     }

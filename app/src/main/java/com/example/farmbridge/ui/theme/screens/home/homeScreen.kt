@@ -64,7 +64,7 @@ import com.example.farmbridge.ui.theme.screens.products.TopBar
 
 
 @Composable
-fun HomeScreen(navController: NavController){
+fun HomeScreen(navController: NavController, userId: String){
 
     Column (verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -75,6 +75,10 @@ fun HomeScreen(navController: NavController){
             color = Color.Black,
             fontFamily = FontFamily.Serif,
             fontSize = 25.sp)
+        Text(
+            text = userId,
+            fontSize = 20.sp
+        )
         Spacer(modifier = Modifier.height(100.dp))
         Button(
             onClick = { navController.navigate(ROUTE_ADD_PRODUCT) },
@@ -84,7 +88,7 @@ fun HomeScreen(navController: NavController){
         }
         Spacer(modifier = Modifier.height(100.dp))
         Button(
-            onClick = { navController.navigate(ROUTE_VIEW_PRODUCT) },
+            onClick = { navController.navigate("$ROUTE_VIEW_PRODUCT/$userId") },
             colors = ButtonDefaults.buttonColors(Color.Black),
             modifier = Modifier.fillMaxWidth()) {
             Text(text = "View Product")
@@ -97,7 +101,7 @@ fun HomeScreen(navController: NavController){
 @Preview
 @Composable
 fun HomeScreenPreview(){
-    HomeScreen(rememberNavController())
+    HomeScreen(rememberNavController(), userId = "")
 }
 
 

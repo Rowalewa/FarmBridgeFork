@@ -27,12 +27,11 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.farmbridge.navigation.ROUTE_SUBMIT
 import com.example.myapplication.data.ProductViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DeliveryScreen(navController: NavHostController) {
+fun DeliveryScreen(navController: NavHostController, userId: String, productId: String) {
     var context = LocalContext.current
     var locationOptions = listOf(
         "Ngong",
@@ -49,12 +48,13 @@ fun DeliveryScreen(navController: NavHostController) {
         mutableStateOf(locationOptions[0])
     }
 
-    var mUserid by remember {
-        mutableStateOf("")
-    }
 
     Column {
-        TextField(value = mUserid,
+        TextField(
+            value = userId,
+            onValueChange = {}
+        )
+        TextField(value = productId,
             onValueChange = {}
         )
         Row(
@@ -120,7 +120,8 @@ fun DeliveryScreen(navController: NavHostController) {
         Button(onClick = {
             var myDelivery = ProductViewModel(navController, context)
             myDelivery.makeDelivery(
-                mUserid,
+                userId,
+                productId,
                 location
             )
         },
@@ -140,5 +141,5 @@ fun DeliveryScreen(navController: NavHostController) {
 )
 @Composable
 fun DeliveryScreenPreview(){
-    DeliveryScreen(navController = rememberNavController())
+    DeliveryScreen(navController = rememberNavController(), userId = "", productId = "")
 }
