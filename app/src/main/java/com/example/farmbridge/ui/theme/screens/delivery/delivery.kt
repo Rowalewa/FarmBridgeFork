@@ -52,10 +52,14 @@ fun DeliveryScreen(navController: NavHostController, userId: String, productId: 
     Column {
         TextField(
             value = userId,
-            onValueChange = {}
+            onValueChange = {},
+            label = { Text(text = "User Id")},
+            modifier = Modifier.fillMaxWidth()
         )
         TextField(value = productId,
-            onValueChange = {}
+            onValueChange = {},
+            label = { Text(text = "Product Id")},
+            modifier = Modifier.fillMaxWidth()
         )
         Row(
             modifier = Modifier

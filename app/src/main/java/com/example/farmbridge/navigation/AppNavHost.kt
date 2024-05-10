@@ -49,7 +49,7 @@ fun AppNavHost(
         composable("$ROUTE_DELIVERY/{userId}/{productId}") {passedData->
             DeliveryScreen(
                 navController,
-                passedData.arguments?.getString("clientId")!!,
+                passedData.arguments?.getString("userId")!!,
                 passedData.arguments?.getString("productId")!!
             )
 

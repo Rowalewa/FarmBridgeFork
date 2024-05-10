@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
@@ -47,7 +49,7 @@ import com.example.myapplication.data.ProductViewModel
 fun AddProductScreen(navController: NavHostController) {
     Column(modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally) {
-        var context = LocalContext.current
+        val context = LocalContext.current
         Text(
             text = "Add product",
             fontSize = 30.sp,
@@ -122,7 +124,7 @@ fun ImagePicker(
         }
     )
 
-    Column(modifier = modifier,) {
+    Column(modifier = Modifier.verticalScroll(state = rememberScrollState(), enabled = true, reverseScrolling = true)) {
         if (hasImage && imageUri != null) {
             val bitmap = MediaStore.Images.Media.
             getBitmap(context.contentResolver,imageUri)
@@ -131,7 +133,9 @@ fun ImagePicker(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 32.dp), horizontalAlignment = Alignment.CenterHorizontally,) {
+                .padding(bottom = 32.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
             Button(
                 onClick = {
                     imagePicker.launch("image/*")
@@ -160,10 +164,10 @@ fun ImagePicker(
             Button(onClick = {
                 //-----------WRITE THE UPLOAD LOGIC HERE---------------//
 
-                navController.navigate(ROUTE_VIEW_PRODUCT)
+                navController.popBackStack()
 
             }) {
-                Text(text = "View Products")
+                Text(text = "Back")
             }
 
         }

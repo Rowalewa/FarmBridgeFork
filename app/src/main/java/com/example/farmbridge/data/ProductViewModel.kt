@@ -103,8 +103,7 @@ class ProductViewModel(var navController: NavHostController, var context: Contex
     }
 
     fun deleteProduct(productId: String) {
-        var delRef = FirebaseDatabase.getInstance().getReference()
-            .child("Products/$productId")
+        val delRef = FirebaseDatabase.getInstance().getReference().child("Products/$productId")
         progress.show()
         delRef.removeValue().addOnCompleteListener {
             progress.dismiss()
